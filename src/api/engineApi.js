@@ -1,31 +1,44 @@
-const urlPrefix = ' https://24dyhnzh5h.execute-api.eu-west-2.amazonaws.com'
-const analysisSuffix = '/Beta/az/fileanalysis/analyse';
-const protectSuffix = '/Beta/az/filerebuild/rebuild';
-const apiKey = 'fw9vUniTYY3bEnO7xYPqU5sYnP8iYYyA4V9epdu8'
+const rebuildUrlPrefix = ' https://6twzcr250l.execute-api.us-west-2.amazonaws.com/Prod'
+const analysisUrlPrefix = 'https://o7ymnow6vf.execute-api.us-west-2.amazonaws.com/Prod'
+const analysisSuffix = '/api/Analyse/base64';
+const rebuildSuffix = '/api/Rebuild/base64';
+const apiKey = 'dp2Ug1jtEh4xxFHpJBfWn9V7fKB3yVcv60lhwOAG'
 
 const analyseFile = (file) => {
-    var data = new FormData();
-    data.append("file", file);
-
-    var url = urlPrefix + analysisSuffix;
-    return callFileAnalysis(url, data);
+  return readFileBase64Async(file).then(base64 => {
+    var raw = JSON.stringify({ "Base64": base64 });
+    var url = analysisUrlPrefix + analysisSuffix;
+    return callFileAnalysis(url, raw);
+  });
 }
 
 const protectFile = (file) => {
-    var data = new FormData();
-    data.append("file", file);
-
-    var url = urlPrefix + protectSuffix;
-    return callFileProtect(url, data);
+  return readFileBase64Async(file).then(base64 => {
+    var raw = JSON.stringify({ "Base64": base64 });
+    var url = rebuildUrlPrefix + rebuildSuffix;
+    return callFileProtect(url, raw);
+  });
 }
 
-const callFileAnalysis = (url, data) => {
+const readFileBase64Async = (file) => {
+  return new Promise((resolve, reject) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      var base64 = reader.result.replace(/^data:.+;base64,/, '');
+      resolve(base64);
+    };
+  });
+}
+
+const callFileAnalysis = (url, raw) => {
   const promise = new Promise((resolve, reject) => {
       resolve(fetch(url, {
         method: 'POST',
-        body: data,
+        body: raw,
         headers: {
-          "x-api-key" : apiKey
+          "x-api-key" : apiKey,
+          "Content-Type": "application/json"
         } 
       })
       .then ((response) => {

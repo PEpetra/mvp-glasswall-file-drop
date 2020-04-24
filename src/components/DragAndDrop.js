@@ -31,7 +31,6 @@ class DragAndDrop extends Component {
     this.setState({drag: false})
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       this.props.handleDrop(e.dataTransfer.files)
-      e.dataTransfer.clearData()
       this.dragCounter = 0
     }
   }

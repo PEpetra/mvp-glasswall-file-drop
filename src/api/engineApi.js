@@ -1,4 +1,4 @@
-const rebuildUrlPrefix = ' https://6twzcr250l.execute-api.us-west-2.amazonaws.com/Prod'
+const rebuildUrlPrefix = ' https://8oiyjy8w63.execute-api.us-west-2.amazonaws.com/Prod'
 const analysisUrlPrefix = 'https://o7ymnow6vf.execute-api.us-west-2.amazonaws.com/Prod'
 const analysisSuffix = '/api/Analyse/base64';
 const rebuildSuffix = '/api/Rebuild/base64';
@@ -60,12 +60,24 @@ const callFileProtect = (url, data) => {
         method: 'POST',
         body: data,
         headers: {
-          "x-api-key" : apiKey
+          "x-api-key" : apiKey,
+          "Content-Type": "application/json"
         }
       })
       .then ((response) => {
         if (response.ok) {
-          return response.blob()
+          return response.text().then(function (text) {
+            var chars = atob(text);
+
+            var byteNumbers = new Array(chars.length);
+            for (let i = 0; i < chars.length; i++){
+              byteNumbers[i] = chars.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            return new Blob([byteArray])
+          })
         }
         else{
           throw new Error('Something went wrong');

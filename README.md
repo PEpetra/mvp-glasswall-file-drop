@@ -3,7 +3,7 @@
 Simple single page application written in react, which allows users to have a file processed with the Glasswall d-First Engine.
 
 ## Try it out
-You can view a live demo over at [https://glasswall-file-drop.azurewebsites.net/](https://glasswall-file-drop.azurewebsites.net/)
+You can view a live demo over at [https://file-drop.co.uk/](https://file-drop.co.uk)
 
 ## Related Blog posts
 

@@ -10,7 +10,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
         
     steps:
     - name: Checkout 🛎️
@@ -46,7 +46,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.QA_SECRET_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.QA_SECRET_KEY }}
         AWS_REGION: ${{ secrets.QA_REGION }}
-        SOURCE_DIR: "build"
+        SOURCE_DIR: "package"
                 
   ##merge-to-master:
   ##  runs-on: ubuntu-latest

@@ -5,7 +5,7 @@ on:
     branches: [develop]
 
 jobs:
-  package:
+  deploy-to-qa:
     runs-on: ubuntu-latest
     
     strategy:
@@ -21,22 +21,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Yarn Install 🔧
       run: yarn install
-    - name: Production Build 🔨
-      run: yarn build
-    - name: Upload package ⬆
-      uses: actions/upload-artifact@v1
-      with:
-        name: package
-        path: build/
-      
-  deploy-to-qa:
-    runs-on: ubuntu-latest
-    needs: [package]
-    steps:
-    - name: Download package ⬇
-      uses: actions/download-artifact@v1
-      with:
-        name: package
+    - name: QA Build 🔨
+      run: yarn build-qa
     - name: Deploy to S3 🚀
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -46,7 +32,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.QA_SECRET_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.QA_SECRET_KEY }}
         AWS_REGION: ${{ secrets.QA_REGION }}
-        SOURCE_DIR: "package"
+        SOURCE_DIR: "build"
                 
   ##merge-to-master:
   ##  runs-on: ubuntu-latest

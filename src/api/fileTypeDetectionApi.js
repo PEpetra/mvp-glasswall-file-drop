@@ -1,11 +1,9 @@
-const urlPrefix = ' https://fglpdf9gf6.execute-api.us-west-2.amazonaws.com/Prod';
 const fileTypeDetectionSuffix = '/api/FileTypeDetection/base64';
-const apiKey = 'dp2Ug1jtEh4xxFHpJBfWn9V7fKB3yVcv60lhwOAG';
 
 const getFileType = (file) => {
   return readFileBase64Async(file).then(base64 => {
     var raw = JSON.stringify({ "Base64": base64 });
-    var url = urlPrefix + fileTypeDetectionSuffix;
+    var url = process.env.REACT_APP_FILETYPEDETECTION_API_ENDPOINT + fileTypeDetectionSuffix;
     return callFileTypeDetection(url, raw);
   });
 }
@@ -27,7 +25,7 @@ const callFileTypeDetection = (url, raw) => {
         method: 'POST',
         body: raw,
         headers: {
-          "x-api-key" : apiKey,
+          "x-api-key" : process.env.REACT_APP_FILETYPEDETECTION_API_KEY,
           "Content-Type": "application/json"
       }})
       .then ((response) => {
@@ -39,7 +37,7 @@ const callFileTypeDetection = (url, raw) => {
         }
       })
       .catch (error => {
-        console.log("Error occured ladedaa: " + error)
+        console.log("Error occured: " + error)
       }))
     });
 

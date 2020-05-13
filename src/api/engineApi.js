@@ -1,13 +1,10 @@
-const rebuildUrlPrefix = ' https://8oiyjy8w63.execute-api.us-west-2.amazonaws.com/Prod'
-const analysisUrlPrefix = 'https://o7ymnow6vf.execute-api.us-west-2.amazonaws.com/Prod'
 const analysisSuffix = '/api/Analyse/base64';
 const rebuildSuffix = '/api/Rebuild/base64';
-const apiKey = 'dp2Ug1jtEh4xxFHpJBfWn9V7fKB3yVcv60lhwOAG'
 
 const analyseFile = (file) => {
   return readFileBase64Async(file).then(base64 => {
     var raw = JSON.stringify({ "Base64": base64 });
-    var url = analysisUrlPrefix + analysisSuffix;
+    var url = process.env.REACT_APP_ANALYSE_API_ENDPOINT + analysisSuffix;
     return callFileAnalysis(url, raw);
   });
 }
@@ -15,7 +12,7 @@ const analyseFile = (file) => {
 const protectFile = (file) => {
   return readFileBase64Async(file).then(base64 => {
     var raw = JSON.stringify({ "Base64": base64 });
-    var url = rebuildUrlPrefix + rebuildSuffix;
+    var url = process.env.REACT_APP_REBUILD_API_ENDPOINT + rebuildSuffix;
     return callFileProtect(url, raw);
   });
 }
@@ -37,7 +34,7 @@ const callFileAnalysis = (url, raw) => {
         method: 'POST',
         body: raw,
         headers: {
-          "x-api-key" : apiKey,
+          "x-api-key" : process.env.REACT_APP_ANALYSE_API_KEY,
           "Content-Type": "application/json"
         } 
       })
@@ -60,7 +57,7 @@ const callFileProtect = (url, data) => {
         method: 'POST',
         body: data,
         headers: {
-          "x-api-key" : apiKey,
+          "x-api-key" : process.env.REACT_APP_REBUILD_API_KEY,
           "Content-Type": "application/json"
         }
       })

@@ -70,6 +70,9 @@ class ProcessFile extends React.Component {
             <CSSTransition in={this.state.fileProcessed} timeout={{enter: 500, exit: 500}} classNames="results">
                 <RenderResults key={5} file={this.state.file} analysisReport={this.state.analysisReport} analysisReportString={this.state.analysisReportString} validation={this.state.validation}/>
             </CSSTransition>
+            {/* <div class="terms-link" onClick={this.props.toggleModal}>
+              <button>Terms &amp; Conditions</button>
+            </div> */}
         </div>
     );
   }

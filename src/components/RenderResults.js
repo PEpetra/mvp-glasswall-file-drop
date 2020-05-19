@@ -45,7 +45,7 @@ function RenderResults(props) {
       );
     } else {
       return (
-        <section className="is-clean">
+        <section className="is-clean analysis-results">
           <DownloadAnalysisReport report={analysisReportString} filename={file.name} />
           <h1>File is clean!</h1>
           <FileAttributes file={file} fileType={fileType} />

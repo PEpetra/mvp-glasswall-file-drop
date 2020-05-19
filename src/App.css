@@ -8,6 +8,12 @@
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'nunito_sansregular';
+  src: url("fonts/nunitosans-regular-webfont.woff2") format("woff2"), url("fonts/nunitosans-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 button {
   position: relative;
   overflow: hidden;
@@ -100,7 +106,7 @@ button {
 
 .modal-header {
   height: 5rem;
-  background-color: #eef0f1;
+  background-color: white;
   color: #0c3450;
   border-radius: 0.6rem;
   border-bottom-left-radius: 0;
@@ -153,7 +159,7 @@ button {
   justify-content: flex-end;
   height: 7rem;
   padding: 2rem 2rem 0;
-  background-color: #eef0f1;
+  background-color: white;
   transition: all 0.2s 0.2s; }
   .modal-footer.single-central-button {
     justify-content: space-around;
@@ -175,9 +181,13 @@ button {
 html,
 body {
   font-size: 62.5%;
-  font-family: 'robotoregular', sans-serif;
+  font-family: 'nunito_sansregular', sans-serif;
   color: #636363;
-  background: #e6e9ea; }
+  background: #fafaf9; }
+
+a {
+  text-decoration: none;
+  color: white; }
 
 .results-enter {
   opacity: 0.01;
@@ -199,12 +209,45 @@ body {
 
 .app {
   text-align: center; }
+  .app.show-menu .app-header {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to left, #124163, #31536b) !important;
+    z-index: 99; }
+  .app.show-menu .logo {
+    display: none; }
+  .app.show-menu .app-header-inner {
+    margin: 0;
+    padding: 0; }
+  .app.show-menu nav {
+    display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 99; }
+    .app.show-menu nav li {
+      display: block;
+      margin-bottom: 4rem; }
+      .app.show-menu nav li a {
+        font-size: 2.6rem;
+        line-height: 5rem; }
+  .app.show-menu .menu-button {
+    position: absolute;
+    top: 0;
+    right: 4rem;
+    height: 2rem;
+    width: 2.5rem;
+    background: transparent url("img/menu-icon-close.svg") center center no-repeat; }
+  .app.show-menu .app-menu-list {
+    display: block;
+    padding-top: 20vh; }
 
 .app-logo {
   height: 40vmin; }
 
 .app-header {
-  height: 10rem;
+  height: 12rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,20 +255,51 @@ body {
   color: white;
   background: #1b5c7e;
   /* Old browsers */
-  background: -moz-linear-gradient(left, #196480, #0c3450);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #196480, #0c3450);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to left, #196480, #0c3450);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+  background: linear-gradient(90deg, #0c3451 35%, #186480 100%); }
+
+.app-header-inner, .app-footer-inner {
+  box-sizing: border-box;
+  display: flex;
+  width: calc(100% - 8rem);
+  max-width: 124rem;
+  margin: 0 auto;
+  padding: 0 4rem; }
+
+nav {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end; }
+
+.app-menu-list {
+  padding-top: 3.7rem; }
+  .app-menu-list li {
+    color: white;
+    display: inline-block; }
+    .app-menu-list li a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 1.8rem 1.6rem;
+      transition: all 0.2s; }
+      .app-menu-list li a:hover {
+        opacity: 0.7; }
+
+.menu-button {
+  height: 2rem;
+  width: 2.5rem;
+  background: transparent url("img/menu-icon.svg") center center no-repeat;
+  display: none; }
 
 .app-body {
-  height: calc(100vh - 100px);
+  position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 71vh;
   align-items: center;
   font-size: calc(12px);
   color: #636363;
+  padding-top: 2rem;
   top: 10px; }
   .app-body h1 {
     font-size: 20px;
@@ -270,6 +344,10 @@ body {
 .analysis-results {
   padding-bottom: 4rem; }
 
+.is-clean {
+  padding-top: 3rem;
+  padding-bottom: 7rem; }
+
 .table-container {
   min-width: 30rem;
   margin: 0 1rem;
@@ -308,7 +386,7 @@ th {
   width: 100%;
   height: 100%;
   opacity: 1;
-  background-color: #e6e9ea;
+  background-color: #fafaf9;
   border-radius: 3rem; }
 
 .spinner {
@@ -373,3 +451,103 @@ th {
   right: 0;
   top: 0;
   background: transparent url(../src/img/info-icon.svg) center center no-repeat; }
+
+.terms-link {
+  position: absolute;
+  bottom: 3rem;
+  opacity: 0.5; }
+
+.app-footer {
+  height: 33rem;
+  background: #1b5c7e;
+  /* Old browsers */
+  background: linear-gradient(90deg, #0c3451 35%, #186480 100%); }
+
+.app-footer-inner {
+  box-sizing: border-box;
+  padding-top: 4rem;
+  display: flex; }
+
+.app-footer-left {
+  text-align: left;
+  flex: 2;
+  padding-top: 2rem;
+  padding-right: 9rem; }
+
+.app-footer-menu {
+  flex: 1;
+  text-align: left;
+  padding: 0.6rem 2rem 4rem; }
+  .app-footer-menu ul {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  .app-footer-menu li {
+    color: white;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    padding-bottom: 1.6rem; }
+    .app-footer-menu li a {
+      transition: all 0.2s; }
+      .app-footer-menu li a:hover {
+        color: #1a919a; }
+
+.social-icon {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  margin: 2rem 0.8rem 0 0; }
+  .social-icon.twitter {
+    background: transparent url("img/twitter.svg") center center no-repeat; }
+  .social-icon.linkedin {
+    background: transparent url("img/linkedin.svg") center center no-repeat; }
+  .social-icon.medium {
+    background: transparent url("img/medium.svg") center center no-repeat; }
+  .social-icon.youtube {
+    background: transparent url("img/youtube.svg") center center no-repeat; }
+
+.app-footer-menu-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 2.8rem 0; }
+
+.copyright {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 2.4rem;
+  width: 72%;
+  margin-top: 1rem;
+  text-align: left;
+  color: white; }
+
+.app-sub-footer {
+  background: #132e42;
+  color: white;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  padding: 1.4rem; }
+  .app-sub-footer a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.2s; }
+    .app-sub-footer a:hover {
+      opacity: 0.7; }
+
+@media only screen and (max-width: 1024px) {
+  .menu-button {
+    display: block;
+    margin-top: 3.5rem; }
+  .app-menu-list {
+    display: none; }
+  .app-footer-menu {
+    display: none; }
+  .app-header-inner, .app-footer-inner {
+    padding: 0; } }

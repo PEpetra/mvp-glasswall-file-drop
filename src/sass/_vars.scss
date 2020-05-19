@@ -1,7 +1,7 @@
 // --- Palette --- //
 $white : hsl(0,0,100%);
 $black : hsl(0,0,0%);
-$paleGrey : hsl(195, 9%, 91%);
+$paleGrey : #fafaf9;
 $mediumGrey : hsl(210, 15%, 75%);
 $charcoalGrey : hsl(0, 0%, 39%);
 $blueGrey : hsl(198, 14%, 82%);
@@ -28,7 +28,7 @@ $bodyFont--condensed : 'robotocondensed', sans-serif;
 $bodyFont--regular : 'robotoregular', sans-serif;
 $bodyFontSize : 1.3rem;
 
-$headerHeight : 10rem;
+$headerHeight : 12rem;
 
 // --- Buttons --- //
 $buttonTextColour : $white;

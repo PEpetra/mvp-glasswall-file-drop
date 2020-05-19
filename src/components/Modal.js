@@ -5,10 +5,10 @@ function Modal(props) {
     <div className="modal-overlay file-details-modal" onClick={props.onClose}>
       <section className="modal-container" onClick={props.containerClick}>
         <header className="modal-header">
-          <h1>About</h1>
+          <h1>Terms &amp; Conditions</h1>
         </header>
         <div className="modal-contents">
-          <p>Putting some text in the modal</p>
+          <p>T's and C's go here</p>
         </div>
         <footer className="modal-footer tabset-modal-file-details-footer">
           <button tabIndex="-1" className="button button-filled" onClick={props.onClose}>

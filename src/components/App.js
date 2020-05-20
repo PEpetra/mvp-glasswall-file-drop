@@ -39,7 +39,7 @@ class App extends React.Component {
               <button className="menu-button" onClick={this.toggleMenu}></button>
                 <button className="info-button" onClick={this.toggleModal} style={{display: "none"}}></button>
                 <ul className="app-menu-list">
-                    {/* <li><a href="">Product Info</a></li> */}
+                    <li><a href="https://glasswallsolutions.com/file-drop/">Product Info</a></li>
                     {/* <li><a href="https://glasswall-store.com/">Visit Store</a></li> */}
                     <li><a href="https://glasswallsolutions.com/contact">Contact</a></li>
                 </ul>
@@ -80,10 +80,11 @@ class App extends React.Component {
                   Products
                 </div>
                 <ul>
-                  <li><a href="https://glasswallsolutions.com/rebuild-sdk/">SDK</a></li>
-                  <li><a href="https://glasswallsolutions.com/rebuild-for-email/">Email</a></li>
-                  <li><a href="https://glasswallsolutions.com/rebuild-api/">Cloud</a></li>
-                  <li><a href="https://glasswallsolutions.com/Oakdoor-File-Gateway/">Appliances</a></li>
+                  <li><a href="https://glasswallsolutions.com/products/#sdk">SDK</a></li>
+                  <li><a href="https://glasswallsolutions.com/products/#email">Email</a></li>
+                  <li><a href="https://glasswallsolutions.com/products/#cloud">Cloud</a></li>
+                  <li><a href="https://glasswallsolutions.com/products/#appliances">Appliances</a></li>
+                  <li><a href="https://glasswallsolutions.com/pricing">Pricing</a></li>
                 </ul>
               </div>
               <div className="app-footer-menu">

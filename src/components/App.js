@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import logo from "../logo.svg";
 import Modal from "./Modal";
-import {CSSTransition} from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import ProcessFile from "../components/ProcessFile"
 
 const initialState = {
@@ -36,17 +36,17 @@ class App extends React.Component {
             <div className="app-header-inner">
               <div className="logo"><a href="https://glasswallsolutions.com/" target="blank" ><img src={logo} alt="Logo" height="100" /></a></div>
               <nav>
-              <button className="menu-button" onClick={this.toggleMenu}></button>
-                <button className="info-button" onClick={this.toggleModal} style={{display: "none"}}></button>
+                <button className="menu-button" onClick={this.toggleMenu}></button>
+                <button className="info-button" onClick={this.toggleModal} style={{ display: "none" }}></button>
                 <ul className="app-menu-list">
-                    <li><a href="https://glasswallsolutions.com/file-drop/">Product Info</a></li>
-                    {/* <li><a href="https://glasswall-store.com/">Visit Store</a></li> */}
-                    <li><a href="https://glasswallsolutions.com/contact">Contact</a></li>
+                  <li><a href="https://glasswallsolutions.com/file-drop/">Product Info</a></li>
+                  {/* <li><a href="https://glasswall-store.com/">Visit Store</a></li> */}
+                  <li><a href="https://glasswallsolutions.com/contact">Contact</a></li>
                 </ul>
               </nav>
             </div>
           </div>
-          <ProcessFile toggleModal={this.toggleModal}/>
+          <ProcessFile toggleModal={this.toggleModal} />
           <div className="app-footer">
             <div className="app-footer-inner">
               <section className="app-footer-left">
@@ -65,11 +65,11 @@ class App extends React.Component {
                   <a href="https://www.youtube.com/channel/UCfBGg3aM-LqawBCmbToVuCQ" target="_blank" rel="noopener noreferrer">
                     <div class="social-icon youtube"></div>
                   </a>
-								</div>
+                </div>
               </section>
               <div className="app-footer-menu">
                 <div class="app-footer-menu-title">
-                  Technology
+                  <a href="https://glasswallsolutions.com/technology/">Technology</a>
                 </div>
                 <ul>
                   <li><a href="https://glasswallsolutions.com/technology/">d-FIRST</a></li>
@@ -77,7 +77,7 @@ class App extends React.Component {
               </div>
               <div className="app-footer-menu">
                 <div class="app-footer-menu-title">
-                  Products
+                  <a href="https://glasswallsolutions.com/products/">Products</a>
                 </div>
                 <ul>
                   <li><a href="https://glasswallsolutions.com/products/#sdk">SDK</a></li>
@@ -89,7 +89,7 @@ class App extends React.Component {
               </div>
               <div className="app-footer-menu">
                 <div class="app-footer-menu-title">
-                  Resources
+                  <a href="https://glasswallsolutions.com/resources/">Resources</a>
                 </div>
                 <ul>
                   <li><a href="https://glasswallsolutions.com/ceo-blog/">CEO BLog</a></li>
@@ -100,7 +100,7 @@ class App extends React.Component {
               </div>
               <div className="app-footer-menu">
                 <div class="app-footer-menu-title">
-                  About Us
+                  <a href="https://glasswallsolutions.com/company/">About Us</a>
                 </div>
                 <ul>
                   <li><a href="https://glasswallsolutions.com/company/">Company</a></li>
@@ -112,18 +112,16 @@ class App extends React.Component {
             </div>
           </div>
           <div className="app-sub-footer">
-          <a href="https://glasswallsolutions.com/privacy-policy/">
-								<span class="footer__legend__link">
-									Read our Privacy Policy -
+            <a href="https://glasswallsolutions.com/privacy-policy/">
+              <span class="footer__legend__link">
+                Read our Privacy Policy -
 								</span>
-							</a>
-							<span class="footer__address">Continental House, Oakridge, West End, Surrey, GU24 9PJ. Tel: +44 (0) 203 814 3890<br />
-		          	CKD 1957 - 2018
-              </span>
+            </a>
+            <span class="footer__address">Continental House, Oakridge, West End, Surrey, GU24 9PJ. Tel: +44 (0) 203 814 3890<br /></span>
           </div>
         </div>
         <CSSTransition in={this.state.showModal} timeout={500} classNames="modal" unmountOnExit>
-          <Modal onClose={this.toggleModal} containerClick={this.handleContainerClick} key={7}/>
+          <Modal onClose={this.toggleModal} containerClick={this.handleContainerClick} key={7} />
         </CSSTransition>
       </React.Fragment>
     );
